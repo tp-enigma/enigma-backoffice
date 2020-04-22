@@ -20,6 +20,10 @@ var initAgent = (nom, prenom, telphone, mail) => {
     return new Agent(nom, prenom, telphone, mail)
 }
 
+var filterByField = (field, filter) => {
+    return field.length !== EMPTY_FIELD && filter.includes(field)
+}
+
 
 
 class AnnuaireComp extends Component {
@@ -42,15 +46,11 @@ class AnnuaireComp extends Component {
             })
         } else {
             let agentlist = fetchAgentlist()
-            agentlist = agentlist.forEach(a => {
-                return (this.state.filtreNom.length !== EMPTY_FIELD
-                    && a.getNom().includes(this.state.filtreNom)) ||
-                    (this.state.filtrePrenom.length !== EMPTY_FIELD
-                    && a.getNom().includes(this.state.filtrePrenom))  ||
-                    (this.state.filtreTelephone.length !== EMPTY_FIELD
-                    && a.getNom().includes(this.state.filtreTelephone)) ||
-                    (this.state.filtreMail.length !== EMPTY_FIELD
-                    && a.getNom().includes(this.state.filtreMail))
+            agentlist = agentlist.filter(a => {
+                return filterByField(this.state.filtreNom,a.getNom()) ||
+                       filterByField(this.state.filtrePrenom,a.getPrenom())  ||
+                       filterByField(this.state.filtreTelephone,a.getTelephone()) ||
+                       filterByField(this.state.filtreMail,a.getMail())
             })
 
             this.setState({
