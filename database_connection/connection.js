@@ -19,3 +19,25 @@ client.connect(err => {
         queryDatabase();
     }
 });
+
+
+function queryDatabase() {
+  
+    console.log(`Running query to PostgreSQL server: ${config.host}`);
+
+    const query = 'SELECT * FROM datacustomers;';
+
+    client.query(query)
+        .then(res => {
+            const rows = res.rows;
+
+            rows.map(row => {
+                console.log(`Read: ${JSON.stringify(row)}`);
+            });
+
+            process.exit();
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
