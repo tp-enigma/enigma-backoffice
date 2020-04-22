@@ -7,7 +7,7 @@ const config = {
     user: '<your-db-username>',     
     password: '<your-password>',
     database: '<name-of-database>',
-    port: ,
+    port: 1111,
     ssl: true
 };
 
