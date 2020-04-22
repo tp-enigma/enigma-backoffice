@@ -4,7 +4,8 @@ import Agent from '../model/Agent';
 
 import '../styles/AnnuaireComp.css'
 
-var testAgent = () => {
+const EMPTY_FIELD = 0;
+var fetchAgentlist = () => {
     let i=0
     let agentList = new Array()
     for (; i< 10; i++) {
@@ -24,18 +25,79 @@ var initAgent = (nom, prenom, telphone, mail) => {
 class AnnuaireComp extends Component {
 
     state={
-        element:'',
-        agents: testAgent() == null ? [] : testAgent(),
+        filtreNom:'',
+        filtrePrenom:'',
+        filtreTelephone:'',
+        filtreMail:'',
+        agents: fetchAgentlist(),
     }
+
+    filtrer = () => {
+        if (this.state.filtreNom.length === EMPTY_FIELD
+            && this.state.filtreNom.length === EMPTY_FIELD
+            && this.state.filtreNom.length === EMPTY_FIELD
+            && this.state.filtreNom.length === EMPTY_FIELD) {
+            this.setState({
+                agents: fetchAgentlist()
+            })
+        } else {
+            let agentlist = fetchAgentlist()
+            agentlist = agentlist.forEach(a => {
+                return (this.state.filtreNom.length !== EMPTY_FIELD
+                    && a.getNom().includes(this.state.filtreNom)) ||
+                    (this.state.filtrePrenom.length !== EMPTY_FIELD
+                    && a.getNom().includes(this.state.filtrePrenom))  ||
+                    (this.state.filtreTelephone.length !== EMPTY_FIELD
+                    && a.getNom().includes(this.state.filtreTelephone)) ||
+                    (this.state.filtreMail.length !== EMPTY_FIELD
+                    && a.getNom().includes(this.state.filtreMail))
+            })
+
+            this.setState({
+                agents: agentlist != null ? agentlist : []
+            })
+        }
+    }
+
+    onNomChange = (e) => {
+        this.setState({
+            filtreNom: e.target.value
+        })
+        this.filtrer()
+    }
+
+    onPrenomChange = (e) => {
+        this.setState({
+            filtrePrenom: e.target.value
+        })
+        this.filtrer()
+    }
+
+    onTelephoneChange = (e) => {
+        this.setState({
+            filtreTelephone: e.target.value
+        })
+        this.filtrer()
+    }
+
+    onMailChange = (e) => {
+        this.setState({
+            filtreMail: e.target.value
+        })
+        this.filtrer()
+    }
+
+    
+
 
     addAgents = () => {
         return (<ul>{
             this.state.agents.map((agent,index) => (
-                    <li key={index}>
-                        <p className="agentDescription"><h3>{agent.getNom()}</h3></p>
-                        <p className="agentDescription"><h3>{agent.getPrenom()}</h3></p>
-                        <p className="agentDescription"><h3>{agent.getTelephone()}</h3></p>
-                        <p className="agentDescription"><h3>{agent.getMail()}</h3></p>
+                    <li key={index} className="listAgentClass">
+                        <label className="agentDescription">{agent.getNom()}</label>
+                        <label className="agentDescription">{agent.getPrenom()}</label>
+                        <label className="agentDescription">{agent.getTelephone()}</label>
+                        <label className="agentDescription">{agent.getMail()}</label>
                     </li>
             ))}
         </ul>)
@@ -47,9 +109,14 @@ class AnnuaireComp extends Component {
             <div>
                 <h1>Liste des agents</h1>
                 <div>
-                    <label>Chercher un agent</label>
-                    <input type="text"></input>
-                    <button>chercher</button>
+                    <label className="textSearchClass" >nom:</label>
+                    <input type="text" onChange={this.onNomChange} value={this.state.filtreNom}></input>
+                    <label className="textSearchClass" >prenom:</label>
+                    <input type="text" onChange={this.onPrenomChange} value={this.state.filtrePrenom}></input>
+                    <label className="textSearchClass" >telephone</label>
+                    <input type="text" onChange={this.onTelephoneChange} value={this.state.filtreTelephone}></input>
+                    <label className="textSearchClass" >mail</label>
+                    <input type="text" onChange={this.onMailChange} value={this.state.filtreMail}></input>
                 </div>
                 {this.addAgents()}
             </div>    
