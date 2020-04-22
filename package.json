@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/tp-enigma/enigma-backoffice/issues"
   },
-  "homepage": "https://github.com/tp-enigma/enigma-backoffice#readme"
+  "homepage": "https://github.com/tp-enigma/enigma-backoffice#readme",
+  "dependencies": {
+    "pg": "^8.0.2"
+  }
 }
