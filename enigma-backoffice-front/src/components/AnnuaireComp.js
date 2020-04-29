@@ -108,15 +108,31 @@ class AnnuaireComp extends Component {
             <React.Fragment>
             <div>
                 <h1>Liste des agents</h1>
-                <div>
+                <div className="box">
+                    <div>
                     <label className="textSearchClass" >nom:</label>
+                    </div>
+                    <div>
                     <input type="text" onChange={this.onNomChange} value={this.state.filtreNom}></input>
+                    </div>
+                    <div>
                     <label className="textSearchClass" >prenom:</label>
+                    </div>
+                    <div>
                     <input type="text" onChange={this.onPrenomChange} value={this.state.filtrePrenom}></input>
-                    <label className="textSearchClass" >telephone</label>
+                    </div>
+                    <div>
+                    <label className="textSearchClass"  >telephone</label>
+                    </div>
+                    <div>
                     <input type="text" onChange={this.onTelephoneChange} value={this.state.filtreTelephone}></input>
+                    </div>
+                    <div>
                     <label className="textSearchClass" >mail</label>
+                    </div>
+                    <div>
                     <input type="text" onChange={this.onMailChange} value={this.state.filtreMail}></input>
+                    </div>
                 </div>
                 {this.addAgents()}
             </div>    
