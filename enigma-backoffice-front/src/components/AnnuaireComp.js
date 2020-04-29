@@ -95,10 +95,16 @@ class AnnuaireComp extends Component {
             <ul class="itemHolder">{
             this.state.agents.map((agent,index) => (
                     <li key={index} className="listAgentClass">
+                        <div>
                         <div><label className="agentDescription">{agent.getNom()}</label></div>
                         <div><label className="agentDescription">{agent.getPrenom()}</label></div>
                         <div><label className="agentDescription">{agent.getTelephone()}</label></div>
                         <div><label className="agentDescription">{agent.getMail()}</label></div>
+                        </div>
+                        <div>
+                        <input type="submit" value="Delete"></input>
+                        </div>
+                        
                     </li>
             ))}
         </ul>
