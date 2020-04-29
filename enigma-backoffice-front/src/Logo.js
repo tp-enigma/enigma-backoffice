@@ -5,8 +5,10 @@ import logo from './logo-enigma-school-slider1.png';
 
 function Logo() {
   return (
-    <div className="Logo">
-        <img src={logo} id="logo" />
+    <div className="banner">
+        <div>
+      <img src={logo} id="logo" />
+      </div>
     </div>
   );
 }
