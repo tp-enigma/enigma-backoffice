@@ -1,6 +1,6 @@
 import React from 'react';
-import './Logo.css';
-import logo from './logo-enigma-school-slider1.png';
+import './../styles/Logo.css';
+import logo from './../Images/logo-enigma-school-slider1.png';
 
 
 function Logo() {
