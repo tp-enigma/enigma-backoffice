@@ -19,9 +19,9 @@
 }
 
 .box {
-    
+    width: 75%;
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 30% 45%;
     grid-template-rows: 60px 60px;
     grid-gap: 0px;
     background-color: #2196F3;
@@ -38,7 +38,7 @@
     font-size: 30px;
   }
   input[type=text], select {
-    width: 75%;
+    width: 80%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
