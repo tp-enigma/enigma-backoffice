@@ -1,13 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Logo from "./Logo";
+import Logo from "./Logo"
+
 import * as serviceWorker from "./serviceWorker";
 import App from "./App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Logo />
+    <div class="hero-image">
+      <div class="hero-text">
+        <h2 className="title">enigma-backoffice-app</h2>
+        <Logo />
+      </div>
+    </div>
     <App></App>
   </React.StrictMode>,
   document.getElementById("root")

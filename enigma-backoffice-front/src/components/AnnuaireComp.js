@@ -91,16 +91,19 @@ class AnnuaireComp extends Component {
 
 
     addAgents = () => {
-        return (<ul>{
+        return (<div className="wrapper">
+            <ul class="itemHolder">{
             this.state.agents.map((agent,index) => (
                     <li key={index} className="listAgentClass">
-                        <label className="agentDescription">{agent.getNom()}</label>
-                        <label className="agentDescription">{agent.getPrenom()}</label>
-                        <label className="agentDescription">{agent.getTelephone()}</label>
-                        <label className="agentDescription">{agent.getMail()}</label>
+                        <div><label className="agentDescription">{agent.getNom()}</label></div>
+                        <div><label className="agentDescription">{agent.getPrenom()}</label></div>
+                        <div><label className="agentDescription">{agent.getTelephone()}</label></div>
+                        <div><label className="agentDescription">{agent.getMail()}</label></div>
                     </li>
             ))}
-        </ul>)
+        </ul>
+            
+            </div>)
     }
 
     render() {
@@ -108,16 +111,37 @@ class AnnuaireComp extends Component {
             <React.Fragment>
             <div>
                 <h1>Liste des agents</h1>
-                <div>
-                    <label className="textSearchClass" >nom:</label>
+                <div className="box">
+                    <div>
+                    <label className="textSearchClass" >Nom :</label>
+                    </div>
+                    <div>
                     <input type="text" onChange={this.onNomChange} value={this.state.filtreNom}></input>
-                    <label className="textSearchClass" >prenom:</label>
+                    </div>
+                    <div>
+                    <label className="textSearchClass" >Prénom :</label>
+                    </div>
+                    <div>
                     <input type="text" onChange={this.onPrenomChange} value={this.state.filtrePrenom}></input>
-                    <label className="textSearchClass" >telephone</label>
+                    </div>
+                    <div>
+                    <label className="textSearchClass"  >Téléphone :</label>
+                    </div>
+                    <div>
                     <input type="text" onChange={this.onTelephoneChange} value={this.state.filtreTelephone}></input>
-                    <label className="textSearchClass" >mail</label>
+                    </div>
+                    <div>
+                    <label className="textSearchClass" >Mail :</label>
+                    </div>
+                    <div>
                     <input type="text" onChange={this.onMailChange} value={this.state.filtreMail}></input>
+                    </div>
+                    
                 </div>
+                <div class="btn">
+                    <input type="submit" value="Submit"></input>
+                    </div>
+                
                 {this.addAgents()}
             </div>    
             </React.Fragment>
