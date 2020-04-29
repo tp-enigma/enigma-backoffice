@@ -1,5 +1,5 @@
 const { Client } = require('pg');
-var connectionString = "postgres://postgres:Belline62@localhost:5432/enigma";
+var connectionString = "postgres://postgres:/*Ajouter votre MDP de connexion*/@localhost:5432/enigma";
 const client = new Client({
     connectionString: connectionString
 });
