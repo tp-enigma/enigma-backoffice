@@ -15,21 +15,20 @@ client.connect(err => {
 
 function getAllData() {
   
-    console.log(`Running query to PostgreSQL server:`);
+    queryResult = [];
 
     const query = 'SELECT * FROM customer.customer;';
 
     client.query(query)
         .then(res => {
-            const rows = res.rows;
-
-            rows.map(row => {
-                console.log(`Read: ${JSON.stringify(row)}`);
-            });
+            
+            queryResult = res;
 
             process.exit();
         })
         .catch(err => {
             console.log(err);
         });
+
+    return queryResult;
 }
