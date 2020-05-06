@@ -15,7 +15,7 @@ client.connect(err => {
 
 function getAllData() {
   
-    queryResult = [];
+    let queryResult = [];
 
     const query = 'SELECT * FROM customer.customer;';
 
